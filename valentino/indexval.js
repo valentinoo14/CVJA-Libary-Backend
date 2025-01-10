@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/example", (req, res) => {
-    res.status(200).send("Hello World");
+    res.status(200).send("Hello World dunia tipu tipu");
 });
 
 
