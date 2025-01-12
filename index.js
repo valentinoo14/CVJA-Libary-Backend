@@ -1,25 +1,20 @@
-// import modul express
 const express = require('express');
-
-// membuat instance express
 const app = express();
+const db = require('./database/db')
+const port = 3200;
 
-// Menentukan port untuk dijalankan
-const port = 3000;
-
-// define route
-app.get("/", (req, res) => {
-    res.send("Hello World");
+db.connect((err) => {
+    if(err){
+        console.log('databse gagal konek', err);
+    } else {
+        console.log('database berhasil konek...')
+    }
 });
 
-app.get("/example", (req, res) => {
-    res.status(200).send("Hello World");
-});
+//agar bisa input data dari json dan body form html
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
 
-// ini tes aja wawan
-
-
-// Menjalankan server
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+    console.log(`server sedang berjalan di port ${port}`)
+})
