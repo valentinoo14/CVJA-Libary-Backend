@@ -16,6 +16,8 @@ app.get("/example", (req, res) => {
     res.status(200).send("Hello World");
 });
 
+// ini tes aja wawan
+
 
 // Menjalankan server
 app.listen(port, () => {
