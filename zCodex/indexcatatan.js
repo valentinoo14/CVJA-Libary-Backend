@@ -25,6 +25,39 @@ app.post("/buku", (req, res) => {
     res.send("Data diterima");
 });
 
+//middleware untuk validasi data formulir
+const validateForm = (req, res, next) => {
+  const formData = req.body;
+  if (!formData.id_pengguna || !formData.nama_panjang || !formData.username || !formData.password) {
+    return res.status(400).send("harap isi semua data");
+  }
+
+  //validasi lainnya..
+
+  //jika validasi berhasil, lanjutkan ke pengolahan data
+  next
+}
+
+// Menambah data dari tabel pengguna (bodyparse)
+app.post("/pengguna", validateForm, (req, res) => {  // kirim data dari json body.
+  const formData = req.body
+  connection.query("INSERT INTO Pengguna SET ?", req.body, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(404).json({
+          "status": 404,
+          "message": err,
+        })
+      return;
+    } else {
+      res.status(201).json({
+          "status": 201,
+          "message": "User added successfully",
+        });
+    }
+  })
+})
+
 // route user
 // Mengambil data dari tabel pengguna
 app.get("/pengguna", (req, res) => {
@@ -43,7 +76,7 @@ app.get("/pengguna", (req, res) => {
 
 // Menambah data dari tabel pengguna (bodyparse)
 app.post("/pengguna", (req, res) => {  // kirim data dari json body.
-    connection.query("INSERT INTO Pengguna SET ?", req.body, (err, result) => {
+    connection.query("INSERT INTO Pengguna SET ?", (err, result) => {
       if (err) {
         console.log(err);
         res.status(404).json({
@@ -69,3 +102,5 @@ app.post("/users-formdata", storage.none(), (req, res) => {  //storage.none() di
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
+
+

@@ -1,23 +1,15 @@
-// import modul express
-const express = require('express');
-
-// membuat instance express
+const express = require("express");
 const app = express();
+// import semua route mahasiswa dari file mahasiswa.js
+const bukuRoutes = require("../routes/web/buku");
+const peminjamanRoutes = require("../routes/web/peminjaman");
+const penggunaRoutes = require("../routes/web/pengguna");
 
-// Menentukan port untuk dijalankan
-const port = 3000;
+// memdaftarkan path sebagai endpoint untuk semua routes dari mahasiswa
+app.use("/buku", bukuRoutes);
+app.use("/peminjaman", peminjamanRoutes);
+app.use("/pengguna", penggunaRoutes);
 
-// define route
-app.get("/", (req, res) => {
-    res.send("Hello World");
-});
-
-app.get("/example", (req, res) => {
-    res.status(200).send("Hello World dunia tipu tipu");
-});
-
-
-// Menjalankan server
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+//ekspor app agar semua routes yang ada pada file ini
+// bisa di akases dari luar
+module.exports = app;

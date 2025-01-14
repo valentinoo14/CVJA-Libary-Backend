@@ -1,0 +1,9 @@
+middleware
+- validasi data formulir = pemeriksaan apakah semua bidang dapat diisi, format email benar dll
+- form data multipart =>
+formdata.none() adalah cara menangani form-data multipart untuk teks saja (tanpa file).
+Multipart/form-data biasanya digunakan oleh form HTML ketika ingin mengirim data teks atau file.
+
+
+method post
+= menggunakan const data = req.body -> mengambil data dari body request yang dikirimkan oleh client
