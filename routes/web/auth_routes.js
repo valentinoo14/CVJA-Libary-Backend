@@ -1,12 +1,10 @@
 const express = require('express');
 const route = express.Router();
 const { login } = require("../../controllers/auth");
-const usersController = require('../../controllers/users');
-const authenticateToken = require('../../middleware/auth');
+const penggunaController = require("../../controllers/`");
+const authenticateToken = require("../../middleware/auth");
 
-routes.post('/login', login)
-routes.get('/:id', authenticateToken, usersController.userDetailByID)
-
-routes.get('/detail/:id', usersController.userDetailByID)
+route.post('/login', login)
+route.get('/:id', authenticateToken, penggunaController.penggunaDetailByID)
 
 module.exports = route
