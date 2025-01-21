@@ -3,11 +3,12 @@ const jwt = require("jsonwebtoken");
 
 async function login(req, res) {
   try {
-    const { id, password, nama} = req.body;
-    const idUser = req.body.id;
-    const namaPengguna = req.body.nama;
-    console.log(namaUser);
-    
+    const { id } = req.body
+
+    // const { id, password, nama} = req.body;
+    // const idUser = req.body.id;
+    // const namaPengguna = req.body.nama;
+    // console.log(namaUser);
     
     const result = await penggunaModel.penggunaDetailByID(id, nama);
     if (result.length <= 0) {

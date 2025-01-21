@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));  // Untuk mengurai form data
 
 // memdaftarkan path /api/v1 sebagai prefix endpoint untuk semua routes
 // yang didefensikan dalam allRoutes
-app.use("/api/v1", allRoutes);
+app.use("/cvjalibary", allRoutes);
 
 // Menjalankan server
 app.listen(port, () => {

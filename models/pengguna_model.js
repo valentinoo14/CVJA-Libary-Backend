@@ -5,10 +5,8 @@ async function pengguna() {
   return result;
 }
 
-async function penggunaDetailByID(id, nama) {
+async function penggunaDetailByID(id) {
   try {
-    console.log(nama);
-    
     const [result] = await connection.execute(
       "SELECT * FROM pengguna WHERE id =?",
       [id]
@@ -20,6 +18,6 @@ async function penggunaDetailByID(id, nama) {
 }
 
 module.exports = {
-  users,
-  usersDetailByID
+  pengguna,
+  penggunaDetailByID
 };

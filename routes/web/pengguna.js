@@ -4,7 +4,6 @@ const route = express.Router();
 const penggunaControllers = require ("../../controllers/penggunaControllers")
 
 // Routes
-// Routes
 route.get("/", penggunaControllers.getAllUsers);
 route.get("/:id", penggunaControllers.getUserById);
 route.post("/", penggunaControllers.addUser);
