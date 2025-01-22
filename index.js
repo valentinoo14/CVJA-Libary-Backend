@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const db = require('./database/db')
 const port = 3200;
+const allroutes = require('./routes/web')
 
 db.connect((err) => {
     if(err){
@@ -14,6 +15,7 @@ db.connect((err) => {
 //agar bisa input data dari json dan body form html
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.use('/cvja-libary', allroutes)
 
 app.listen(port, () => {
     console.log(`server sedang berjalan di port ${port}`)

@@ -3,7 +3,7 @@ const connection = require('../database/db');
 //fungsi create
 async function userNew(nama, userName, email, nohp, password) {
     try {
-        const {hasil} = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password value(?, ?, ?, ?, ?)", [nama, userName, email, nohp, password]);
+        const {hasil} = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama, userName, email, nohp, password]);
         return hasil;
     } catch(err){
         throw err;
