@@ -1,67 +1,77 @@
 const userModelsConnection = require('../models/pengguna_models');
 
-//fungsi create
+// Fungsi create
 async function userCreate(req, res) {
-    const {nama, userName,email, nohp, password} = req.body;
+    const { nama, userName, email, nohp, password } = req.body;
     try {
-        const hasil = await userModelsConnection.userNew(nama, userName, email, nohp, password)
-        res.status(200).json(hasil)
-    } catch (err){
+        const hasil = await userModelsConnection.userNew(nama, userName, email, nohp, password);
+        res.status(200).json({ hasil });
+    } catch (err) {
+        console.error('Error in userCreate:', err);
         res.status(500).json({
-            message: "gagal membuat data pengguna baru", err
-        })
+            message: "Gagal membuat data pengguna baru",
+            err
+        });
     }
 }
 
-//fungsi read
+// Fungsi read
 async function userGet(req, res) {
     try {
         const hasil = await userModelsConnection.userRead();
-        res.status(202).json(hasil)
-    } catch(err){
+        res.status(202).json(hasil);
+    } catch (err) {
+        console.error('Error in userGet:', err); // Tambahkan logging
         res.status(500).json({
-            message: "error gagal mengambil data customer", err
-        })
+            message: "Error gagal mengambil data customer",
+            err
+        });
     }
 }
 
-// operasi read berdasarkan id
+// Operasi read berdasarkan id
 async function userGetId(req, res) {
-    const id = req.params.id
+    const id = req.params.id;
     try {
         const hasil = await userModelsConnection.userReadById(id);
-        res.status(202).json(hasil)
-    } catch (err){
+        res.status(202).json(hasil);
+    } catch (err) {
+        console.error('Error in userGetId:', err); // Tambahkan logging
         res.status(500).json({
-            message: "error gagal mengambil data customer", err
-        })
+            message: "Error gagal mengambil data customer",
+            err
+        });
     }
 }
 
-//operasi update
+// Operasi update
 async function userUpdate(req, res) {
-    const id = req.params.id
-    const {nama, username, email, nohp, password} = req.body
+    const id = req.params.id;
+    const { nama, username, email, nohp, password } = req.body;
     try {
         const hasil = await userModelsConnection.userUpdate(nama, username, email, nohp, password, id);
-        res.status(202).json(hasil)
-    } catch(err) {
+        res.status(202).json(hasil);
+    } catch (err) {
+        console.error('Error in userUpdate:', err); // Tambahkan logging
         res.status(500).json({
-            message: "gagak update customer", err
-        })
+            message: "Gagal update customer",
+            err
+        });
     }
 }
 
-//operasi delete
+// Operasi delete
 async function userDelete(req, res) {
-    const id = req.params.id
-    try{
+    const id = req.params.id;
+    try {
         const hasil = await userModelsConnection.userDelete(id);
-        res.status(202).json(hasil)
-    } catch(err){
+        res.status(202).json(hasil);
+    } catch (err) {
+        console.error('Error in userDelete:', err); // Tambahkan logging
         res.status(500).json({
-            message: "gagal menghapus data user"
-        })
+            message: "Gagal menghapus data user",
+            err
+        });
     }
 }
 
@@ -71,4 +81,4 @@ module.exports = {
     userGetId,
     userUpdate,
     userDelete
-}
+};

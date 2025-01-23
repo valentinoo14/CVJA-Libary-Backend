@@ -1,8 +1,8 @@
 const express = require('express')
-const penggunaControl = express()
+const penggunaControl = express.Router()
 const Control = require('../controllers/pengguna')
 
-penggunaControl.post('/create', Control.userCreate)
+penggunaControl.post('/', Control.userCreate)
 penggunaControl.get('/', Control.userGet)
 penggunaControl.get('/:id', Control.userGetId)
 penggunaControl.put('/:id', Control.userUpdate)

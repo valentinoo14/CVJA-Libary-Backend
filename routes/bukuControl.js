@@ -1,5 +1,5 @@
 const express = require('express')
-const bukuControl = express()
+const bukuControl = express.Router()
 const Control = require('../controllers/buku')
 
 bukuControl.post('/', Control.CreateBuku)

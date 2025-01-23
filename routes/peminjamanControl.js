@@ -1,5 +1,5 @@
 const express = require('express')
-const peminjamanControl = express()
+const peminjamanControl = express.Router()
 const Control = require('../controllers/peminjaman')
 
 peminjamanControl.post('/', Control.pjmCreate)

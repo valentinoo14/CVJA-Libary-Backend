@@ -1,51 +1,54 @@
 const connection = require('../database/db');
 
-//fungsi create
+// Fungsi create
 async function userNew(nama, userName, email, nohp, password) {
     try {
-        const {hasil} = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama, userName, email, nohp, password]);
+        const [hasil] = await connection.execute("INSERT INTO pengguna (nama_panjang, username, email, nomor_handphone, password) VALUES (?, ?, ?, ?, ?)", [nama, userName, email, nohp, password]);
         return hasil;
-    } catch(err){
+    } catch (err) {
         throw err;
     }
 }
 
-//fungsi read all
+// Fungsi read all
 async function userRead() {
-    try{
-        const {hasil} = await connection.execute("select * from pengguna")
-        return hasil
-    } catch(err){
-        throw err
-    }
-}
-
-//fungsi read by id
-async function userReadById(id) {
-    try{
-        const {hasil} = await connection.execute("select * from pengguna where id_pengguna = ?", [id])
+    try {
+        const [hasil] = await connection.execute("SELECT * FROM pengguna");
+        console.log('Query Result:', hasil); // Log hasil query
         return hasil;
-    } catch(err){
-        throw err
+    } catch (err) {
+        console.error('Error executing query:', err); // Log error secara rinci
+        throw err;
     }
 }
 
-//funsgi update
+
+// Fungsi read by id
+async function userReadById(id) {
+    try {
+        const [hasil] = await connection.execute("SELECT * FROM pengguna WHERE id_pengguna = ?", [id]);
+        return hasil;
+    } catch (err) {
+        throw err;
+    }
+}
+
+// Fungsi update
 async function userUpdate(nama, username, email, nohp, password, id) {
     try {
-        const{hasil} = await connection.execute("update pengguna set nama_panjang = ?, usename = ?, email = ?, nomor_handphone = ?, password = ? where id_pengguna = ?", [nama, username, email, nohp, password, id])
-        return hasil
-    } catch(Err){
-        throw err
+        const [hasil] = await connection.execute("UPDATE pengguna SET nama_panjang = ?, username = ?, email = ?, nomor_handphone = ?, password = ? WHERE id_pengguna = ?", [nama, username, email, nohp, password, id]);
+        return hasil;
+    } catch (err) {
+        throw err;
     }
 }
 
-//fungsi delete
+// Fungsi delete
 async function userDelete(id) {
-    try{
-        const {hasil} = await connection.execute("delete from pengguna where id_pengguna = ?",[id])
-        return hasil
-    } catch(err){
+    try {
+        const [hasil] = await connection.execute("DELETE FROM pengguna WHERE id_pengguna = ?", [id]);
+        return hasil;
+    } catch (err) {
         throw err;
     }
 }
@@ -56,4 +59,4 @@ module.exports = {
     userReadById,
     userUpdate,
     userDelete
-}
+};
