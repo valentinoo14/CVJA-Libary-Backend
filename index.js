@@ -1,6 +1,6 @@
 // import modul express
 const express = require('express');
-const allRoutes = require("./routes/web");
+const allRoutes = require("./routes/web/web");
 
 // membuat instance express
 const app = express();
@@ -14,6 +14,11 @@ app.use(express.urlencoded({ extended: true }));  // Untuk mengurai form data
 // memdaftarkan path /api/v1 sebagai prefix endpoint untuk semua routes
 // yang didefensikan dalam allRoutes
 app.use("/cvjalibary", allRoutes);
+
+// define oute untuk testing 
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
 
 // Menjalankan server
 app.listen(port, () => {
