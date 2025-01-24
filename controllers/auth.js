@@ -10,7 +10,7 @@ async function login(req, res) {
     // const namaPengguna = req.body.nama;
     // console.log(namaUser);
     
-    const result = await penggunaModel.usersDetailByID(id_pengguna);
+    const result = await penggunaModel.usersDetailById(id_pengguna);
     if (result.length <= 0) {
       res.json({
         message: "Login failed",
@@ -19,7 +19,7 @@ async function login(req, res) {
     }
 
     const token = jwt.sign(
-      { id_pengguna: result[0].id_pengguna, nama_panjang: result[0].nama_panjang },
+      { id_pengguna: result[0].id_pengguna},
       "valent12337",
       { expiresIn: "14 days" }
     );

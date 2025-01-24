@@ -9,9 +9,9 @@ async function users() {
 
 async function usersDetailById(id_pengguna) {
     try {
-        const [hasil] = await connection.execute("SELECT * FROM pengguna where id_pengguna = ?", 
-            [id_pengguna]
-        );
+        const [hasil] = await connection.execute("SELECT * FROM pengguna WHERE id_pengguna = ?", 
+        [id_pengguna]);
+        console.log("Hasil Query:", hasil);
         return hasil;
     } catch (error) {
         throw error
@@ -22,7 +22,7 @@ async function usersDetailById(id_pengguna) {
 //fungsi create
 async function userNew(nama_panjang, username, email, nomor_handphone, password) {
     try {
-        const {hasil} = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama_panjang, username, email, nomor_handphone, password]);
+        const [hasil] = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama_panjang, username, email, nomor_handphone, password]);
         return hasil;
     } catch(err){
         throw err;
