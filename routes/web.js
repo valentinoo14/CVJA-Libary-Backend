@@ -27,10 +27,10 @@ const authRoutes = require("./web/auth_routes");
 
 
 // Daftarkan route dengan app.use()
-route.use("/buku", bukuRoutes);           // Route untuk buku
-route.use("/peminjaman", peminjamanRoutes); // Route untuk peminjaman
-route.use("/pengguna", penggunaRoutes);     // Route untuk pengguna
-route.use("/auth", authRoutes);            // Route untuk auth
+route.use("/buku", bukuRoutes);
+route.use("/peminjaman", peminjamanRoutes);
+route.use("/pengguna", penggunaRoutes);
+route.use("/auth", authRoutes);
 
 // Ekspor app agar bisa digunakan di index.js
 module.exports = route;

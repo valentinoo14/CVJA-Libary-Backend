@@ -17,7 +17,7 @@ async function bukuGetId(id_buku) {
 }
 
 //fungsi untuk melakukan update
-async function bukuUpdate(id_buku, penerbit, id_buku) {
+async function bukuUpdate(judul_buku, penerbit, id_buku) {
     try {
         const [hasil] = await connection.execute("update buku set judul_buku = ?, penerbit = ? where id_buku = ?", [judul_buku, penerbit, id_buku]);
         return hasil
