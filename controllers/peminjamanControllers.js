@@ -144,9 +144,9 @@ async function pjmGetAll(req, res) {
 
 //controllers get id
 async function pjmGetId(req, res) {
-    const id = req.params.id_peminjaman
+    const id_peminjaman = req.params.id_peminjaman
     try{
-        const hasil = await peminjamanConnection.peminjamanReadId(id)
+        const hasil = await peminjamanConnection.peminjamanReadId(id_peminjaman)
         res.status(201).json(hasil)
     } catch(err){
         res.status(500).json({
@@ -158,9 +158,10 @@ async function pjmGetId(req, res) {
 
 //controllers update
 async function pjmUpdate(req, res) {
-    const id = req.params.id_peminjaman
+    const id_peminjaman = req.params.id_peminjaman
+    const {tanggal_pengembalian} = req.body
     try{
-        const hasil = await peminjamanConnection.peminjamanUpdate(id)
+        const hasil = await peminjamanConnection.peminjamanUpdate(tanggal_pengembalian, id_peminjaman)
         res.status(202).json(hasil)
     } catch(err){
         res.status(500).json({
@@ -172,9 +173,9 @@ async function pjmUpdate(req, res) {
 
 //controllers delete
 async function pjmDelete(req, res) {
-    const id = req.params.id_peminjaman
+    const id_peminjaman = req.params.id_peminjaman
     try{
-        const hasil = await peminjamanConnection.peminjamanDelete(id)
+        const hasil = await peminjamanConnection.peminjamanDelete(id_peminjaman)
         res.status(202).json(hasil)
     } catch(err){
         res.status(500).json({
