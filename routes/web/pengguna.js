@@ -6,9 +6,9 @@ const authenticateToken = require("../../middleware/authVerify");
 
 // Routes
 route.get("/", authenticateToken, penggunaControllers.userGet);
-route.get("/:id", authenticateToken, penggunaControllers.userGetId);
+route.get("/:id_pengguna", authenticateToken, penggunaControllers.userGetId);
 route.post("/", authenticateToken, penggunaControllers.userCreate);
-route.put("/:id", authenticateToken, penggunaControllers.userUpdate);
-route.delete("/:id", authenticateToken, penggunaControllers.userDelete);
+route.put("/:id_pengguna", authenticateToken, penggunaControllers.userUpdate);
+route.delete("/:id_pengguna", authenticateToken, penggunaControllers.userDelete);
 
 module.exports = route ;

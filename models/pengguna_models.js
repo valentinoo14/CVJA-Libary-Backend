@@ -22,7 +22,7 @@ async function usersDetailById(id_pengguna) {
 //fungsi create
 async function userNew(nama_panjang, username, email, nomor_handphone, password) {
     try {
-        const [hasil] = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama_panjang, username, email, nomor_handphone, password]);
+        const [hasil] = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password) values(?, ?, ?, ?, ?)", [nama_panjang, username, email, nomor_handphone, password]);
         return hasil;
     } catch(err){
         throw err;

@@ -52,3 +52,7 @@ async function login(req, res) {
 module.exports = {
   login
 }
+
+
+// "id_pengguna": 1
+// "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9wZW5nZ3VuYSI6MSwiaWF0IjoxNzM3NzM4OTE2LCJleHAiOjE3Mzg5NDg1MTZ9.ToT1vjHu8nxVCKR5yCoWxPSY9Mr3Tm57D_fzvefv4C0"
