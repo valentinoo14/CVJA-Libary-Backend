@@ -144,7 +144,7 @@ async function pjmGetAll(req, res) {
 
 //controllers get id
 async function pjmGetId(req, res) {
-    const id = req.params.id
+    const id = req.params.id_peminjaman
     try{
         const hasil = await peminjamanConnection.peminjamanReadId(id)
         res.status(201).json(hasil)
@@ -158,7 +158,7 @@ async function pjmGetId(req, res) {
 
 //controllers update
 async function pjmUpdate(req, res) {
-    const id = req.params.id
+    const id = req.params.id_peminjaman
     try{
         const hasil = await peminjamanConnection.peminjamanUpdate(id)
         res.status(202).json(hasil)
@@ -172,7 +172,7 @@ async function pjmUpdate(req, res) {
 
 //controllers delete
 async function pjmDelete(req, res) {
-    const id = req.params.id
+    const id = req.params.id_peminjaman
     try{
         const hasil = await peminjamanConnection.peminjamanDelete(id)
         res.status(202).json(hasil)

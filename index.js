@@ -1,6 +1,6 @@
 // import modul express
 const express = require('express');
-const allRoutes = require("./routes/web/web");
+const allRoutes = require("./routes/web");
 
 // membuat instance express
 const app = express();

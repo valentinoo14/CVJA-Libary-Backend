@@ -7,9 +7,9 @@ async function bukuGet() {
 }
 
 //fungsi untuk melakukan get by id
-async function bukuGetId(id) {
+async function bukuGetId(id_buku) {
     try {
-        const [hasil] = await connection.execute("select * from buku where id_buku = ?", [Id]);
+        const [hasil] = await connection.execute("select * from buku where id_buku = ?", [id_buku]);
         return hasil
     } catch (err){
         throw err
@@ -17,9 +17,9 @@ async function bukuGetId(id) {
 }
 
 //fungsi untuk melakukan update
-async function bukuUpdate(judul, penerbit, id) {
+async function bukuUpdate(id_buku, penerbit, id_buku) {
     try {
-        const [hasil] = await connection.execute("update buku set judul_buku = ?, penerbit = ? where id_buku = ?", [judul, penerbit, id]);
+        const [hasil] = await connection.execute("update buku set judul_buku = ?, penerbit = ? where id_buku = ?", [judul_buku, penerbit, id_buku]);
         return hasil
     } catch (err){
         throw err
@@ -27,9 +27,9 @@ async function bukuUpdate(judul, penerbit, id) {
 }
 
 //funsgi untuk melakukan create
-async function bukuCreate(judul, penerbit, kategori) {
+async function bukuCreate(judul_buku, penerbit, kategori) {
     try {
-        const [hasil] = await connection.execute("insert into buku (judul_buku, penerbit, kategori) value(?, ?, ?)", [judul, penerbit, kategori]);
+        const [hasil] = await connection.execute("insert into buku (judul_buku, penerbit, kategori) value(?, ?, ?)", [judul_buku, penerbit, kategori]);
         return hasil
     } catch(err){
         throw err
@@ -37,9 +37,9 @@ async function bukuCreate(judul, penerbit, kategori) {
 }
 
 //fungsi untuk melakukan delete
-async function bukuDelete(id) {
+async function bukuDelete(id_buku) {
     try{
-        const [hasil] = await connection.execute("delete from buku where id_buku = ?", [id]);
+        const [hasil] = await connection.execute("delete from buku where id_buku = ?", [id_buku]);
         return hasil
     } catch(err){
         throw err

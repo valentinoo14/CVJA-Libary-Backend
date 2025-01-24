@@ -3,14 +3,14 @@ const jwt = require("jsonwebtoken");
 
 async function login(req, res) {
   try {
-    const { id } = req.body;
+    const { id_pengguna } = req.body;
 
     // const { id, password, nama} = req.body;
     // const idUser = req.body.id;
     // const namaPengguna = req.body.nama;
     // console.log(namaUser);
     
-    const result = await penggunaModel.penggunaDetailByID(id);
+    const result = await penggunaModel.usersDetailByID(id_pengguna);
     if (result.length <= 0) {
       res.json({
         message: "Login failed",
@@ -19,14 +19,14 @@ async function login(req, res) {
     }
 
     const token = jwt.sign(
-      { id: result[0].id, nama_panjang: result[0].nama_panjang },
+      { id_pengguna: result[0].id_pengguna, nama_panjang: result[0].nama_panjang },
       "valent12337",
       { expiresIn: "14 days" }
     );
 
     res.json({
       message: "Login success",
-      id: result[0].id,
+      id_pengguna: result[0].id_pengguna,
       token: token,
     });
   } catch (error) {

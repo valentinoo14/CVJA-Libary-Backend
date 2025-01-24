@@ -23,9 +23,9 @@ async function peminjamanReadAll() {
 }
 
 //models read id
-async function peminjamanReadId(id) {
+async function peminjamanReadId(id_peminjaman) {
     try{
-        const[hasil] = await connection.execute("select * from peminjaman where id_peminjaman = ?" [id])
+        const[hasil] = await connection.execute("select * from peminjaman where id_peminjaman = ?" [id_peminjaman])
         return hasil
     } catch(err){
         console.error("Terjadi error:", err);
@@ -34,9 +34,9 @@ async function peminjamanReadId(id) {
 }
 
 //models update
-async function peminjamanUpdate(id) {
+async function peminjamanUpdate(id_peminjaman) {
     try{
-        const [hasil] = await connection.execute("update peminjaman set id_buku = ?" [id])
+        const [hasil] = await connection.execute("update peminjaman set id_buku = ?" [id_peminjaman])
         return hasil
     } catch(err){
         console.error("Terjadi error:", err);
@@ -45,9 +45,9 @@ async function peminjamanUpdate(id) {
 }
 
 //mpdels delete
-async function peminjamanDelete(id) {
+async function peminjamanDelete(id_peminjaman) {
     try{
-        const [hasil] = await connection.execute("delete from peminjaman where id_peminjaman = ?", [id])
+        const [hasil] = await connection.execute("delete from peminjaman where id_peminjaman = ?", [id_peminjaman])
     return hasil
     } catch(err){
         console.error("Terjadi error:", err);

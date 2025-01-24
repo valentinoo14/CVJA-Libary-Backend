@@ -17,20 +17,21 @@
 // module.exports = app;
 
 const express = require("express");
-const app = express();
+const route = express.Router();
 
 // Import routes lainnya
-const bukuRoutes = require("../../routes/web/buku")
-const peminjamanRoutes = require("../../routes/web/peminjaman");
-const penggunaRoutes = require("../../routes/web/pengguna");
-const authRoutes = require("../../routes/web/auth_routes");
+const bukuRoutes = require("./web/buku")
+const peminjamanRoutes = require("./web/peminjaman");
+const penggunaRoutes = require("./web/pengguna");
+const authRoutes = require("./web/auth_routes");
+
 
 // Daftarkan route dengan app.use()
-app.use("/buku", bukuRoutes);           // Route untuk buku
-app.use("/peminjaman", peminjamanRoutes); // Route untuk peminjaman
-app.use("/pengguna", penggunaRoutes);     // Route untuk pengguna
-app.use("/auth", authRoutes);            // Route untuk auth
+route.use("/buku", bukuRoutes);           // Route untuk buku
+route.use("/peminjaman", peminjamanRoutes); // Route untuk peminjaman
+route.use("/pengguna", penggunaRoutes);     // Route untuk pengguna
+route.use("/auth", authRoutes);            // Route untuk auth
 
 // Ekspor app agar bisa digunakan di index.js
-module.exports = app;
+module.exports = route;
 

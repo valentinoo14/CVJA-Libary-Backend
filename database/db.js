@@ -26,7 +26,7 @@ async function connectDatabase() {
         const connection = await mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: 'password',
+            password: '',
             database: 'CVJA_Libary'
         });
         console.log("Koneksi ke database berhasil");

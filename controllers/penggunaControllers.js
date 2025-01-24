@@ -110,11 +110,12 @@
 
 const userModelsConnection = require('../models/pengguna_models');
 
+
 // Fungsi create
 async function userCreate(req, res) {
-    const { nama, userName, email, nohp, password } = req.body;
+    const { nama, username, email, no_handphone, password } = req.body;
     try {
-        const hasil = await userModelsConnection.userNew(nama, userName, email, nohp, password);
+        const hasil = await userModelsConnection.userNew(nama, username, email, no_handphone, password);
         res.status(201).json(hasil); // Status 201 untuk created
     } catch (err) {
         console.error(err); // Tambahkan log error
@@ -141,7 +142,7 @@ async function userGet(req, res) {
 
 // Operasi read berdasarkan id
 async function userGetId(req, res) {
-    const id = req.params.id;
+    const id = req.params.id_pengguna;
     try {
         const hasil = await userModelsConnection.userReadById(id);
         if (!hasil) {
@@ -159,7 +160,7 @@ async function userGetId(req, res) {
 
 // Operasi update
 async function userUpdate(req, res) {
-    const id = req.params.id;
+    const id = req.params.id_pengguna;
     const { nama, username, email, nohp, password } = req.body;
     try {
         const hasil = await userModelsConnection.userUpdate(nama, username, email, nohp, password, id);
@@ -178,7 +179,7 @@ async function userUpdate(req, res) {
 
 // Operasi delete
 async function userDelete(req, res) {
-    const id = req.params.id;
+    const id = req.params.id_pengguna;
     try {
         const hasil = await userModelsConnection.userDelete(id);
         if (!hasil) {

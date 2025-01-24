@@ -7,10 +7,10 @@ async function users() {
     return hasil;
 }
 
-async function usersDetailById(id) {
+async function usersDetailById(id_pengguna) {
     try {
-        const [hasil] = await connection.execute("SELECT * FROM pengguna where id = ?", 
-            [id]
+        const [hasil] = await connection.execute("SELECT * FROM pengguna where id_pengguna = ?", 
+            [id_pengguna]
         );
         return hasil;
     } catch (error) {
@@ -20,9 +20,9 @@ async function usersDetailById(id) {
 
 
 //fungsi create
-async function userNew(nama, userName, email, nohp, password) {
+async function userNew(nama_panjang, username, email, nomor_handphone, password) {
     try {
-        const {hasil} = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama, userName, email, nohp, password]);
+        const {hasil} = await connection.execute("insert into pengguna (nama_panjang, username, email, nomor_handphone, password values(?, ?, ?, ?, ?)", [nama_panjang, username, email, nomor_handphone, password]);
         return hasil;
     } catch(err){
         throw err;
@@ -40,9 +40,9 @@ async function userRead() {
 }
 
 //fungsi read by id
-async function userReadById(id) {
+async function userReadById(id_pengguna) {
     try{
-        const {hasil} = await connection.execute("select * from pengguna where id_pengguna = ?", [id])
+        const {hasil} = await connection.execute("select * from pengguna where id_pengguna = ?", [id_pengguna])
         return hasil;
     } catch(err){
         throw err
@@ -50,9 +50,9 @@ async function userReadById(id) {
 }
 
 //funsgi update
-async function userUpdate(nama, username, email, nohp, password, id) {
+async function userUpdate(nama, username, email, nomor_handphone, password, id_pengguna) {
     try {
-        const{hasil} = await connection.execute("update pengguna set nama_panjang = ?, usename = ?, email = ?, nomor_handphone = ?, password = ? where id_pengguna = ?", [nama, username, email, nohp, password, id])
+        const{hasil} = await connection.execute("update pengguna set nama_panjang = ?, username = ?, email = ?, nomor_handphone = ?, password = ? where id_pengguna = ?", [nama, username, email, nomor_handphone, password, id_pengguna])
         return hasil
     } catch(Err){
         throw err
@@ -60,9 +60,9 @@ async function userUpdate(nama, username, email, nohp, password, id) {
 }
 
 //fungsi delete
-async function userDelete(id) {
+async function userDelete(id_pengguna) {
     try{
-        const {hasil} = await connection.execute("delete from pengguna where id_pengguna = ?",[id])
+        const {hasil} = await connection.execute("delete from pengguna where id_pengguna = ?",[id_pengguna])
         return hasil
     } catch(err){
         throw err;

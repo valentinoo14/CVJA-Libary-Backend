@@ -125,7 +125,7 @@ async function GetBuku(req, res) {
 
 // operasi read berdasarkan id
 async function GetIdBuku(req, res) {
-    const id = req.params.id
+    const id = req.params.id_buku
     try {
         const hasil = await bukuConnection.bukuGetId(id);
         res.status(202).json(hasil)
@@ -138,7 +138,7 @@ async function GetIdBuku(req, res) {
 
 //operasi update
 async function UpdateBuku(req, res) {
-    const id = req.params.id
+    const id = req.params.id_buku
     const {judul, penerbit} = req.body
     try {
         const hasil = await bukuConnection.bukuUpdate(judul, penerbit, id);
@@ -152,9 +152,9 @@ async function UpdateBuku(req, res) {
 
 //operasi create
 async function CreateBuku(req, res) {
-    const {judul, penerbit, kategori} = req.body
+    const {judul_buku, penerbit, kategori} = req.body
     try {
-        const hasil = await bukuConnection.bukuCreate(judul, penerbit, kategori)
+        const hasil = await bukuConnection.bukuCreate(judul_buku, penerbit, kategori)
         res.status(202).json(hasil)
     } catch (err){
         res.status(500).json({
@@ -165,7 +165,7 @@ async function CreateBuku(req, res) {
 
 //operasi delete
 async function DeleteBuku(req, res) {
-    const id = req.params.id
+    const id = req.params.id_buku
     try{
         const hasil = await bukuConnection.bukuDelete(id);
         res.status(202).json(hasil)
