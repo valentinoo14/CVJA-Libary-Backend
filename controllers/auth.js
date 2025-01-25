@@ -53,6 +53,58 @@ module.exports = {
   login
 }
 
+// const penggunaModel = require("../models/pengguna_models");
+// const jwt = require("jsonwebtoken");
 
-// "id_pengguna": 1
-// "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9wZW5nZ3VuYSI6MSwiaWF0IjoxNzM3NzM4OTE2LCJleHAiOjE3Mzg5NDg1MTZ9.ToT1vjHu8nxVCKR5yCoWxPSY9Mr3Tm57D_fzvefv4C0"
+// async function login(req, res) {
+//   try {
+//     const { email, password } = req.body;
+
+//     // Fetch user by email
+//     const result = await penggunaModel.userRead();
+//     const user = result.find(u => u.email === email && u.password === password);
+
+//     if (!user) {
+//       return res.status(401).json({ message: "Login failed: Invalid credentials" });
+//     }
+
+//     const token = jwt.sign(
+//       { id: user.id_pengguna, name: user.nama_panjang },
+//       "valent12337",
+//       { expiresIn: "14 days" }
+//     );
+
+//     return res.json({
+//       message: "Login success",
+//       id: user.id_pengguna,
+//       token,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: "An error occurred" });
+//   }
+// }
+
+// async function penggunaDetailByID(req, res) {
+//   try {
+//     const { id } = req.params;
+//     const result = await penggunaModel.userReadById(id);
+
+//     if (result.length === 0) {
+//       return res.status(404).json({ message: "Pengguna tidak ditemukan" });
+//     }
+
+//     return res.json({
+//       message: "Pengguna ditemukan",
+//       data: result[0],
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: "An error occurred" });
+//   }
+// }
+
+// module.exports = {
+//   login,
+//   penggunaDetailByID,
+// };

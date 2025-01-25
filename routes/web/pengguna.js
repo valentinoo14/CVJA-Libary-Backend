@@ -5,7 +5,7 @@ const penggunaControllers = require ("../../controllers/penggunaControllers");
 const authenticateToken = require("../../middleware/authVerify");
 
 // Routes
-route.get("/", authenticateToken, penggunaControllers.userGet);
+route.get("/", penggunaControllers.userGet);
 route.get("/:id_pengguna", authenticateToken, penggunaControllers.userGetId);
 route.post("/", authenticateToken, penggunaControllers.userCreate);
 route.put("/:id_pengguna", authenticateToken, penggunaControllers.userUpdate);
